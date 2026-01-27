@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
+import { GlitchText } from "@/components/ui/glitch-text";
 
 const skills = [
     "React & Next.js",
@@ -27,7 +28,7 @@ export function About() {
                         transition={{ duration: 0.5 }}
                     >
                         <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-                            More Than Just Code
+                            <GlitchText text="More Than Just Code" />
                         </h2>
                         <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
                             We are a team of passionate developers and designers dedicated to building digital products that stand out. With a focus on performance, aesthetics, and scalability, we turn complex problems into elegant solutions.

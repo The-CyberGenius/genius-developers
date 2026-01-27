@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Mail, MessageSquare, Send } from "lucide-react";
+import { Mail, MessageSquare, Send, Phone } from "lucide-react";
 import { useState, useRef } from "react";
 import emailjs from '@emailjs/browser';
 
@@ -20,21 +20,31 @@ export function Contact() {
                     transition={{ duration: 0.5 }}
                     className="max-w-3xl mx-auto text-center mb-12"
                 >
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-500 mb-6 mx-auto">
+                        <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                        </span>
+                        <span className="text-xs font-semibold uppercase tracking-wider">Available for New Projects</span>
+                    </div>
+
                     <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-                        Let's Build Something Amazing
+                        Let's Discuss Your Idea
                     </h2>
                     <p className="text-muted-foreground text-lg mb-8">
-                        Have a project in mind? We'd love to hear about it. Send us a message or chat with us directly on WhatsApp.
+                        Ready to take your business online?
+                        <br className="hidden md:block" />
+                        Call us directly or drop a message on WhatsApp for instant response.
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-                        <Button size="lg" className="w-full sm:w-auto gap-2" onClick={() => window.open('https://wa.me/918955256878?text=Hi%20Genius%20Developers%2C%20I%20want%20to%20discuss%20a%20project.', '_blank')}>
+                        <Button size="lg" className="w-full sm:w-auto gap-2 bg-[#25D366] hover:bg-[#25D366]/90 text-white shadow-lg shadow-green-500/20" onClick={() => window.open('https://wa.me/918955256878?text=Hi%20Genius%20Developers%2C%20I%20want%20to%20discuss%20a%20project.', '_blank')}>
                             <MessageSquare className="w-5 h-5" />
-                            Chat on WhatsApp
+                            WhatsApp: +91 89552 56878
                         </Button>
-                        <Button variant="outline" size="lg" className="w-full sm:w-auto gap-2" onClick={() => window.location.href = 'mailto:your@email.com'}>
-                            <Mail className="w-5 h-5" />
-                            Email Us
+                        <Button variant="outline" size="lg" className="w-full sm:w-auto gap-2" onClick={() => window.location.href = 'tel:+918955256878'}>
+                            <Phone className="w-5 h-5" />
+                            Call Us Directly
                         </Button>
                     </div>
                 </motion.div>

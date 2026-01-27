@@ -10,6 +10,8 @@ import {
     Database
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
+import { GlitchText } from "@/components/ui/glitch-text";
 
 const services = [
     {
@@ -59,7 +61,7 @@ export function Services() {
                     className="text-center mb-16"
                 >
                     <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-                        Our Expertise
+                        <GlitchText text="Our Expertise" />
                     </h2>
                     <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                         We deliver comprehensive digital solutions tailored to your business needs, from design to deployment.
@@ -68,13 +70,9 @@ export function Services() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {services.map((service, index) => (
-                        <motion.div
+                        <SpotlightCard
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="group relative p-8 rounded-2xl bg-card border border-border/50 hover:border-primary/50 transition-colors hover:shadow-lg hover:shadow-primary/5"
+                            className="p-8 h-full flex flex-col items-start"
                         >
                             <div className="mb-4 inline-flex p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
                                 <service.icon className="w-6 h-6" />
@@ -85,7 +83,7 @@ export function Services() {
                             <p className="text-muted-foreground">
                                 {service.description}
                             </p>
-                        </motion.div>
+                        </SpotlightCard>
                     ))}
                 </div>
             </div>

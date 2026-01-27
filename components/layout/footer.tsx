@@ -55,7 +55,7 @@ export function Footer() {
                                 Transparent development. Check out this project's repository on GitHub.
                             </p>
                             <a
-                                href="https://github.com/The-CyberGenius/genius-developers"
+                                href="https://github.com/The-CyberGenius/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-sm font-medium text-primary hover:text-primary/80 flex items-center gap-2"

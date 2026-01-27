@@ -3,16 +3,27 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Code, Sparkles } from "lucide-react";
+import { GlitchText } from "@/components/ui/glitch-text";
 
 export function Hero() {
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background pt-20">
-            {/* Background Elements */}
-            <div className="absolute inset-0 z-0">
-                <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px] animate-pulse" />
-                <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[128px] animate-pulse delay-1000" />
-                <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-            </div>
+            {/* Background Elements removed to use key global BackgroundEffects */}
+            {/* Floating Tech Icons */}
+            <motion.div
+                animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-20 right-[10%] opacity-20 hidden md:block"
+            >
+                <Code className="w-24 h-24 text-primary" />
+            </motion.div>
+            <motion.div
+                animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute bottom-40 left-[10%] opacity-20 hidden md:block"
+            >
+                <Sparkles className="w-16 h-16 text-purple-500" />
+            </motion.div>
 
             <div className="container mx-auto relative z-10 px-4 md:px-6 text-center">
                 <motion.div
@@ -34,7 +45,7 @@ export function Hero() {
                     className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/50"
                 >
                     Turning Ideas Into <br />
-                    <span className="text-primary">Digital Reality</span>
+                    <span className="text-primary cursor-default"><GlitchText text="Digital Reality" /></span>
                 </motion.h1>
 
                 <motion.p
@@ -73,6 +84,6 @@ export function Hero() {
                 <span className="text-xs uppercase tracking-widest">Scroll</span>
                 <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent" />
             </motion.div>
-        </section>
+        </section >
     );
 }

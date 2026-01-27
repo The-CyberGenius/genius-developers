@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   description: "High-end web development, technical services, and digital solutions.",
 };
 
+import { BackgroundEffects } from "@/components/ui/background-effects";
+import { Loader } from "@/components/ui/loader";
+import { WhatsAppButton } from "@/components/ui/whatsapp-button";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,7 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={cn(outfit.className, "min-h-screen bg-background text-foreground antialiased")}>
+      <body className={cn(outfit.className, "min-h-screen bg-background text-foreground antialiased relative")}>
+        <BackgroundEffects />
+        <Loader />
+        <WhatsAppButton />
         <Navbar />
         {children}
         <Footer />
