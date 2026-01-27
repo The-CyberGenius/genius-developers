@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Code, Sparkles, User } from "lucide-react";
+import { ArrowRight, Code, Sparkles } from "lucide-react";
 import { GlitchText } from "@/components/ui/glitch-text";
 
 export function Hero() {
@@ -75,24 +75,24 @@ export function Hero() {
                     </div>
 
                     {/* Trust Indicator */}
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                        <div className="flex -space-x-2">
-                            {[1, 2, 3, 4].map((i) => (
-                                <div key={i} className="w-8 h-8 rounded-full border-2 border-background bg-secondary flex items-center justify-center text-xs font-bold text-secondary-foreground">
-                                    <User className="w-4 h-4" />
-                                </div>
+                    <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                        <div className="flex items-center gap-1 h-4">
+                            {[1, 2, 3, 4, 5].map((i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ height: 4 }}
+                                    animate={{ height: [4, 16, 4] }}
+                                    transition={{
+                                        duration: 1,
+                                        repeat: Infinity,
+                                        ease: "easeInOut",
+                                        delay: i * 0.1
+                                    }}
+                                    className="w-1 bg-primary rounded-full"
+                                />
                             ))}
                         </div>
-                        <div className="flex flex-col items-start">
-                            <div className="flex gap-0.5 text-primary">
-                                <Sparkles className="w-3 h-3 fill-primary" />
-                                <Sparkles className="w-3 h-3 fill-primary" />
-                                <Sparkles className="w-3 h-3 fill-primary" />
-                                <Sparkles className="w-3 h-3 fill-primary" />
-                                <Sparkles className="w-3 h-3 fill-primary" />
-                            </div>
-                            <span className="font-medium">100% Client Satisfaction</span>
-                        </div>
+                        <span className="font-medium">100% Client Satisfaction</span>
                     </div>
                 </motion.div>
             </div>

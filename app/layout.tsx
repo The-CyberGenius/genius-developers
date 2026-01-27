@@ -19,7 +19,6 @@ import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 
 import { ThemeProvider } from "@/components/theme-provider";
 
-import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
 import { FloatingParticles } from "@/components/ui/floating-particles";
 
 export default function RootLayout({
@@ -36,7 +35,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <MouseSpotlight />
           <FloatingParticles />
           <BackgroundEffects />
           <Loader />

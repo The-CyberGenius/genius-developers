@@ -42,6 +42,7 @@ export function FloatingParticles() {
                     style={{
                         width: p.size,
                         height: p.size,
+                        willChange: "transform",
                     }}
                 />
             ))}

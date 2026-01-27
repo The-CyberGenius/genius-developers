@@ -17,6 +17,7 @@ export function BackgroundEffects() {
             >
                 <motion.div
                     className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent"
+                    style={{ willChange: "transform" }}
                     animate={{
                         translateY: [0, 40]
                     }}
@@ -40,6 +41,7 @@ export function BackgroundEffects() {
                     ease: "easeInOut"
                 }}
                 className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/30 rounded-full blur-[128px]"
+                style={{ willChange: "transform, opacity" }}
             />
 
             <motion.div
@@ -54,6 +56,7 @@ export function BackgroundEffects() {
                     delay: 2
                 }}
                 className="absolute bottom-[10%] right-[-5%] w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[128px]"
+                style={{ willChange: "transform, opacity" }}
             />
 
             <motion.div
@@ -67,6 +70,7 @@ export function BackgroundEffects() {
                     ease: "easeInOut",
                 }}
                 className="absolute top-[40%] left-[30%] w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[96px]"
+                style={{ willChange: "transform, opacity" }}
             />
         </div>
     );
