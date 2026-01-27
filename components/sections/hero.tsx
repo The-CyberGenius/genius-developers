@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Code, Sparkles } from "lucide-react";
+import { ArrowRight, Code, Sparkles, User } from "lucide-react";
 import { GlitchText } from "@/components/ui/glitch-text";
 
 export function Hero() {
@@ -61,16 +61,39 @@ export function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
-                    className="flex flex-col sm:flex-row items-center justify-center gap-4"
+                    className="flex flex-col items-center gap-8"
                 >
-                    <Button size="lg" className="w-full sm:w-auto gap-2">
-                        View Our Work
-                        <ArrowRight className="w-4 h-4" />
-                    </Button>
-                    <Button variant="outline" size="lg" className="w-full sm:w-auto gap-2" onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}>
-                        <Code className="w-4 h-4" />
-                        Our Services
-                    </Button>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
+                        <Button size="lg" className="w-full sm:w-auto gap-2 min-w-[200px]" onClick={() => window.open('https://wa.me/918955256878?text=Hi%20Genius%20Developers%2C%20I%20want%20to%20discuss%20a%20project.', '_blank')}>
+                            Start Your Project
+                            <ArrowRight className="w-4 h-4" />
+                        </Button>
+                        <Button variant="outline" size="lg" className="w-full sm:w-auto gap-2 min-w-[200px]" onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}>
+                            <Code className="w-4 h-4" />
+                            View Our Work
+                        </Button>
+                    </div>
+
+                    {/* Trust Indicator */}
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                        <div className="flex -space-x-2">
+                            {[1, 2, 3, 4].map((i) => (
+                                <div key={i} className="w-8 h-8 rounded-full border-2 border-background bg-secondary flex items-center justify-center text-xs font-bold text-secondary-foreground">
+                                    <User className="w-4 h-4" />
+                                </div>
+                            ))}
+                        </div>
+                        <div className="flex flex-col items-start">
+                            <div className="flex gap-0.5 text-primary">
+                                <Sparkles className="w-3 h-3 fill-primary" />
+                                <Sparkles className="w-3 h-3 fill-primary" />
+                                <Sparkles className="w-3 h-3 fill-primary" />
+                                <Sparkles className="w-3 h-3 fill-primary" />
+                                <Sparkles className="w-3 h-3 fill-primary" />
+                            </div>
+                            <span className="font-medium">100% Client Satisfaction</span>
+                        </div>
+                    </div>
                 </motion.div>
             </div>
 

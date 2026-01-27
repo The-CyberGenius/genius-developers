@@ -17,20 +17,34 @@ import { BackgroundEffects } from "@/components/ui/background-effects";
 import { Loader } from "@/components/ui/loader";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 
+import { ThemeProvider } from "@/components/theme-provider";
+
+import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
+import { FloatingParticles } from "@/components/ui/floating-particles";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body className={cn(outfit.className, "min-h-screen bg-background text-foreground antialiased relative")}>
-        <BackgroundEffects />
-        <Loader />
-        <WhatsAppButton />
-        <Navbar />
-        {children}
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <MouseSpotlight />
+          <FloatingParticles />
+          <BackgroundEffects />
+          <Loader />
+          <WhatsAppButton />
+          <Navbar />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

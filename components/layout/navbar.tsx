@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 
 export function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -41,7 +42,7 @@ export function Navbar() {
                 </Link>
 
                 {/* Desktop Nav */}
-                <nav className="hidden md:flex items-center gap-8">
+                <nav className="hidden md:flex items-center gap-6">
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
@@ -51,9 +52,12 @@ export function Navbar() {
                             {link.name}
                         </Link>
                     ))}
-                    <Button variant="primary" size="sm" onClick={() => window.open('https://wa.me/8955256878?text=Hi%20Genius%20Developers%2C%20I%20want%20to%20discuss%20a%20project.', '_blank')}>
-                        Lets Talk
-                    </Button>
+                    <div className="flex items-center gap-4">
+                        <ModeToggle />
+                        <Button variant="primary" size="sm" onClick={() => window.open('https://wa.me/8955256878?text=Hi%20Genius%20Developers%2C%20I%20want%20to%20discuss%20a%20project.', '_blank')}>
+                            Lets Talk
+                        </Button>
+                    </div>
                 </nav>
 
                 {/* Mobile Menu Toggle */}
@@ -78,6 +82,10 @@ export function Navbar() {
                             {link.name}
                         </Link>
                     ))}
+                    <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium">Theme</span>
+                        <ModeToggle />
+                    </div>
                     <Button className="w-full" variant="primary" onClick={() => window.open('https://wa.me/918955256878?text=Hi%20Genius%20Developers%2C%20I%20want%20to%20discuss%20a%20project.', '_blank')}>
                         Lets Talk
                     </Button>

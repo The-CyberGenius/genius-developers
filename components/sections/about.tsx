@@ -4,16 +4,9 @@ import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 import { GlitchText } from "@/components/ui/glitch-text";
 
-const skills = [
-    "React & Next.js",
-    "TypeScript",
-    "Node.js & Express",
-    "TailwindCSS",
-    "Framer Motion",
-    "Database Design (SQL/NoSQL)",
-    "Cloud Deployment (Vercel/AWS)",
-    "SEO Optimization",
-];
+import { ProjectSlideshow } from "@/components/ui/project-slideshow";
+
+import { skills } from "@/data/skills";
 
 export function About() {
     return (
@@ -53,21 +46,9 @@ export function About() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="relative"
+                        className="relative h-[400px] w-full"
                     >
-                        <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/10 bg-card/50 backdrop-blur-sm">
-                            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-500/20" />
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="text-center p-6">
-                                    <div className="text-6xl font-bold text-primary mb-2">3+</div>
-                                    <div className="text-xl text-muted-foreground">Years Experience</div>
-                                </div>
-                            </div>
-
-                            {/* Decorative Elements */}
-                            <div className="absolute top-10 right-10 w-20 h-20 bg-primary/30 rounded-full blur-2xl animate-pulse" />
-                            <div className="absolute bottom-10 left-10 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-700" />
-                        </div>
+                        <ProjectSlideshow />
                     </motion.div>
                 </div>
             </div>

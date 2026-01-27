@@ -7,32 +7,7 @@ import Image from "next/image";
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
 import { CardSpotlight } from "@/components/ui/spotlight";
 
-const projects = [
-    {
-        title: "Professor's Adda",
-        category: "Learning Platform",
-        description: "A comprehensive e-learning platform featuring course management, student dashboards, and secure note distribution.",
-        image: "/assets/app_images/professor_adda.png",
-        tags: ["Next.js", "Education", "LMS"],
-        links: { demo: "https://professorsadda.com", code: "#" },
-    },
-    {
-        title: "Apno Digital Studio",
-        category: "Photography Portfolio",
-        description: "An award-winning cinematic portfolio website for a premium photography studio, featuring dark mode and immersive animations.",
-        image: "/assets/app_images/apno_studio.png",
-        tags: ["React", "GSAP", "Cinematic UI"],
-        links: { demo: "https://aapno-digital.netlify.app/", code: "#" },
-    },
-    {
-        title: "Neural Finance",
-        category: "AI Fintech Dashboard",
-        description: "A futuristic AI-powered analytics dashboard for real-time crypto trading and financial forecasting.",
-        image: "/assets/app_images/neural_finance.png",
-        tags: ["AI/ML", "Fintech", "Web3"],
-        links: { demo: "#", code: "#" },
-    },
-];
+import { projects } from "@/data/projects";
 
 export function Portfolio() {
     return (
@@ -61,18 +36,18 @@ export function Portfolio() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project, index) => (
                         <CardContainer key={index} className="inter-var">
-                            <CardBody className="bg-card relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl p-6 border transition-all duration-300">
+                            <CardBody className="bg-card text-card-foreground relative group/card dark:hover:shadow-2xl dark:hover:shadow-primary/[0.1] border-border w-full h-auto rounded-xl p-6 border transition-all duration-300">
                                 <CardSpotlight className="h-full">
                                     <CardItem
                                         translateZ="50"
-                                        className="text-xl font-bold text-neutral-600 dark:text-white"
+                                        className="text-xl font-bold text-card-foreground"
                                     >
                                         {project.title}
                                     </CardItem>
                                     <CardItem
                                         as="p"
                                         translateZ="60"
-                                        className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
+                                        className="text-muted-foreground text-sm max-w-sm mt-2"
                                     >
                                         {project.category}
                                     </CardItem>
@@ -85,15 +60,13 @@ export function Portfolio() {
                                                 className="h-full w-full object-cover rounded-xl group-hover/card:scale-110 transition-transform duration-500"
                                                 alt={project.title}
                                             />
-                                            {/* Overlay */}
-                                            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                                                <Button size="sm" variant="primary" className="gap-2" onClick={() => window.open(project.links.demo, '_blank')}>
-                                                    Demo <ExternalLink className="w-4 h-4" />
-                                                </Button>
-                                                <Button size="sm" variant="secondary" className="gap-2" onClick={() => window.open(project.links.code, '_blank')}>
-                                                    Code <Github className="w-4 h-4" />
-                                                </Button>
-                                            </div>
+                                            {project.links && (
+                                                <div className="absolute inset-0 bg-background/80 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                                                    <Button size="sm" variant="primary" className="gap-2" onClick={() => window.open(project.links!.work, '_blank')}>
+                                                        Visit Site <ExternalLink className="w-4 h-4" />
+                                                    </Button>
+                                                </div>
+                                            )}
                                         </div>
                                     </CardItem>
                                     <CardItem
