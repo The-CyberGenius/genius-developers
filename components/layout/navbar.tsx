@@ -3,94 +3,80 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ModeToggle } from "@/components/ui/mode-toggle";
+
+const navLinks = [
+  { name: "About", href: "#about" },
+  { name: "Work", href: "#work" },
+  { name: "Skills", href: "#skills" },
+  { name: "Contact", href: "#contact" },
+];
 
 export function Navbar() {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-    // Handle scroll effect
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    const navLinks = [
-        { name: "Services", href: "#services" },
-        { name: "Work", href: "#work" },
-        { name: "About", href: "#about" },
-    ];
-
-    return (
-        <header
-            className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-                isScrolled
-                    ? "bg-background/80 backdrop-blur-md border-b border-white/10 py-3"
-                    : "bg-transparent py-5"
-            )}
+  return (
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "bg-white/80 backdrop-blur-xl",
+        scrolled ? "border-b border-[#D2D2D7]" : "border-b border-transparent"
+      )}
+    >
+      <div className="max-w-[1200px] mx-auto px-6 h-14 flex items-center justify-between">
+        <Link
+          href="/"
+          className="text-xl font-bold text-[#1D1D1F] tracking-tight hover:opacity-70 transition-opacity"
         >
-            <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-                {/* Logo */}
-                <Link href="/" className="text-2xl font-bold tracking-tighter text-foreground">
-                    Genius<span className="text-primary">Devs</span>
-                </Link>
+          S.
+        </Link>
 
-                {/* Desktop Nav */}
-                <nav className="hidden md:flex items-center gap-6">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.name}
-                            href={link.href}
-                            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-                        >
-                            {link.name}
-                        </Link>
-                    ))}
-                    <div className="flex items-center gap-4">
-                        <ModeToggle />
-                        <Button variant="primary" size="sm" onClick={() => window.open('https://wa.me/8955256878?text=Hi%20Genius%20Developers%2C%20I%20want%20to%20discuss%20a%20project.', '_blank')}>
-                            Lets Talk
-                        </Button>
-                    </div>
-                </nav>
+        <nav className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className={cn(
+                "text-sm font-medium text-[#6E6E73] hover:text-[#1D1D1F] transition-colors duration-200",
+                "relative after:absolute after:bottom-[-2px] after:left-0 after:h-[1px]",
+                "after:w-0 after:bg-[#1D1D1F] after:transition-all after:duration-300 hover:after:w-full"
+              )}
+            >
+              {link.name}
+            </a>
+          ))}
+        </nav>
 
-                {/* Mobile Menu Toggle */}
-                <button
-                    className="md:hidden text-foreground"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                >
-                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
-            </div>
+        <button
+          className="md:hidden p-2 text-[#1D1D1F] hover:opacity-70 transition-opacity"
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
+      </div>
 
-            {/* Mobile Nav */}
-            {isMobileMenuOpen && (
-                <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-white/10 p-4 flex flex-col gap-4 animate-in slide-in-from-top-5">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.name}
-                            href={link.href}
-                            className="text-base font-medium text-foreground hover:text-primary"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                            {link.name}
-                        </Link>
-                    ))}
-                    <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium">Theme</span>
-                        <ModeToggle />
-                    </div>
-                    <Button className="w-full" variant="primary" onClick={() => window.open('https://wa.me/918955256878?text=Hi%20Genius%20Developers%2C%20I%20want%20to%20discuss%20a%20project.', '_blank')}>
-                        Lets Talk
-                    </Button>
-                </div>
-            )}
-        </header>
-    );
+      {menuOpen && (
+        <div className="md:hidden bg-white border-t border-[#D2D2D7] px-6 py-6 flex flex-col gap-5">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+              className="text-lg font-medium text-[#1D1D1F] hover:text-[#6E6E73] transition-colors"
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
+      )}
+    </header>
+  );
 }
