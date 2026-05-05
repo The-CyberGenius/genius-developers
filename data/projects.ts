@@ -36,4 +36,11 @@ export const projects = [
         image: "/assets/app_images/nexus_health.png",
         tags: ["Tailwind", "Supabase", "WebRTC"],
     },
+    {
+        title: "Neural Finance",
+        category: "FinTech Dashboard",
+        description: "AI-powered financial analytics platform with real-time market data, predictive insights, and automated portfolio management.",
+        image: "/assets/app_images/neural_finance.png",
+        tags: ["React", "Python", "AI/ML"],
+    },
 ];
